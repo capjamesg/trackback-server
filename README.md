@@ -18,7 +18,7 @@ cd trackback-server
 pip install -r requirements.txt
 ```
 
-This project uses a PostgreSQL database to store Trackbacks. To configure the database with this application, open the `config.py` file and replace the variable values with the appropriate values for your database.
+This project uses a PostgreSQL database to store Trackbacks. To configure the database with this application, copy the the `config_example.py` file into a new file called `config.py`. Replace the variable values with the appropriate values for your database.
 
 To run the app, execute the following command:
 
