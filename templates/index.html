@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Trackback Server</title>
+
+        <link rel="icon" href="https://jamesg.blog/favicon.ico" type="image/x-icon" />
+        
+        <meta name="description" content="A site to receive and process Trackbacks." />
+        <meta property="og:image" content="https://screenshot.jamesg.blog/?url=https://trackback.jamesg.blog" />
+
+        <style>
+            html, body {
+                font-family: sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+            * {
+                box-sizing: border-box;
+                text-decoration: none;
+            }
+            nav {
+                background-color: #81B1CC;
+                color: black;
+                padding: 1em;
+            }
+            nav ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: space-between;
+            }
+            nav li {
+                display: inline-block;
+            }
+            nav a {
+                color: black;
+                text-decoration: none;
+            }
+            nav a:hover {
+                text-decoration: underline;
+            }
+            main {
+                max-width: 35em;
+                margin: auto;
+            }
+            input {
+                padding: 0.5em;
+                border: 1px solid #ccc;
+                border-radius: 0.25em;
+                font-size: 1em;
+                width: 100%;
+            }
+            input[type="submit"] {
+                background-color: #81B1CC;
+                color: black;
+                border: none;
+                cursor: pointer;
+            }
+            pre {
+                background-color: #eee;
+                padding: 1em;
+                border-radius: 0.25em;
+                margin: 1em 0;
+                white-space: pre-wrap;
+                word-break: break-word;
+            }
+            footer {
+                text-align: center;
+                padding: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="/">Trackback Server</a></li>
+                <li><a href="https://jamesg.blog">Made by capjamesg</a></li>
+            </ul>
+        </nav>
+        <main>
+            <h1>Trackback Server 🌐</h1>
+            <p>This is a simple server to receive and process Trackbacks.</p>
+            <h2>What is a Trackback?</h2>
+            <p>
+                A Trackback is a way for a website to notify another website that it has linked to it.
+            </p>
+            <p>
+                Trackbacks were first implemented in Moveable Type. Today, applications such as arXiv receive Trackbacks so they can know when another site that supports Trackbacks links to them.
+            </p>
+            <p>
+                <i>Note: <a href="https://indieweb.org/Webmention">Webmentions</a> are a more modern iteration of Trackbacks, offering many improvements such as more advanced validation mechanisms and their use of HTML rather than RDF.</i>
+            </p>
+            <h2>Send a Trackback</h2>
+            <form action="/" method="POST">
+                <input type="url" name="url" placeholder="https://example.com"><br><br>
+                <input type="submit" value="Preview">
+            </form>
+            <footer>
+                <p>Trackback Server was made with ❤️, 🧇 and ☕️ by <a href="https://jamesg.blog">capjamesg</a>. <a href="https://github.com/capjamesg/microformats-to-mediawiki">View Source</a>.</p>
+            </footer>
+        </main>
+        <script>
+            /* add http:// to URL fields on blur or when enter is pressed */
+            document.addEventListener('DOMContentLoaded', function() {
+              function addDefaultScheme(target) {
+                if(target.value.match(/^(?!https?:).+\..+/)) {
+                  target.value = "http://"+target.value;
+                }
+              }
+              var elements = document.querySelectorAll("input[type=url]");
+              Array.prototype.forEach.call(elements, function(el, i){
+                el.addEventListener("blur", function(e){
+                  addDefaultScheme(e.target);
+                });
+                el.addEventListener("keydown", function(e){
+                  if(e.keyCode == 13) {
+                    addDefaultScheme(e.target);
+                  }
+                });
+              });
+            });
+          
+          </script>
+    </body>
+</html>
