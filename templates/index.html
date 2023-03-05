@@ -51,6 +51,9 @@
                 font-size: 1em;
                 width: 100%;
             }
+            code {
+                background-color: #1E28BB63;
+            }
             input[type="submit"] {
                 background-color: #81B1CC;
                 color: black;
@@ -86,7 +89,7 @@
                 A Trackback is a way for a website to notify another website that it has linked to it.
             </p>
             <p>
-                Trackbacks were first implemented in Moveable Type. Today, applications such as arXiv receive Trackbacks so they can know when another site that supports Trackbacks links to them.
+                Trackbacks were first implemented in Moveable Type. Today, applications such as <a href="https://arxiv.com">arXiv</a> receive Trackbacks so they can know when another site that supports Trackbacks links to them.
             </p>
             <p>
                 <i>Note: <a href="https://indieweb.org/Webmention">Webmentions</a> are a more modern iteration of Trackbacks, offering many improvements such as more advanced validation mechanisms and their use of HTML rather than RDF.</i>
@@ -96,6 +99,31 @@
                 <input type="url" name="url" placeholder="https://example.com"><br><br>
                 <input type="submit" value="Preview">
             </form>
+            <h2>Endpoint URL</h2>
+            <p>
+                To send a Trackback to this server, send a POST request to <code>/trackback</code>.
+            </p>
+            <h2>Retrieve Trackbacks</h2>
+            <p>
+                To retrieve Trackbacks for a given URL, send a GET request to <code>/trackback?url=https://example.com</code>.
+            </p>
+            <p>
+                This will return a JSON object containing the Trackbacks for the given URL:
+            </p>
+            <pre>
+{
+    "url": "https://example.com",
+    "trackbacks": [
+        {
+            "url": "https://example.com/trackback/1",
+            "title": "Example Title",
+            "excerpt": "Example excerpt",
+            "blog_name": "Example Blog Name",
+            "date": "2020-01-01T00:00:00Z"
+        },
+    ]
+}
+            </pre>
             <footer>
                 <p>Trackback Server was made with ❤️, 🧇 and ☕️ by <a href="https://jamesg.blog">capjamesg</a>. <a href="https://github.com/capjamesg/microformats-to-mediawiki">View Source</a>.</p>
             </footer>
